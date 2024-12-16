@@ -1,0 +1,165 @@
+.boards {
+  width: auto;
+  overflow-x: scroll;
+  min-height: 100vh;
+}
+
+.boards > .wrapper {
+  /* padding: 1% 0 0 6%; */
+  /* max-height: 100vh; */
+  min-height: 100vh ;
+  background-size: cover;
+  background-position: center center;
+  padding-top: 160px;
+  background-blend-mode: darken;
+  background-repeat: no-repeat;
+  overflow-y: auto;
+}
+
+.boards > .wrapper .wrapper-lists {
+  align-items: start;
+  display: flex;
+  gap: 18px;
+  /* max-height: calc(100vh - 156px); */
+  /* overflow-x: scroll;
+  overflow-x: visible;
+  overflow-y: hidden; */
+}
+
+.boards .addList {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  /* border-radius: 18px; */
+  width: 250px;
+  min-width: 250px;
+}
+
+.boards .addList button {
+  color: #101204 !important;
+  padding: 6px 12px 6px 8px;
+  border-radius: 8px;
+}
+
+.boards .addList.addListCard {
+  width: 97%;
+
+  min-width: auto;
+}
+.boards .addList .dropdown-toggle::after {
+  display: none;
+}
+
+.boards .addList:hover {
+  /* background-color: #292a2b; */
+}
+.boards .addList.addListCard:hover {
+  /* background-color: #a6c5e229; */
+}
+
+.boards .addList img {
+  width: 25px;
+  width: 16px;
+}
+
+.boards .addList > button {
+  text-align: left;
+  flex: 1;
+  border: none;
+  background: transparent;
+}
+.boards .addList.addListCard > button {
+  color: #515255 !important;
+}
+
+.boards .addList.addListCard > button:hover {
+  background: #a6c5e229;
+  color: #b6c2cf !important;
+}
+
+.boards .addListForm {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 18px;
+  width: 250px;
+  padding: 8px 12px;
+  background-color: white;
+  z-index: 100000;
+  position: absolute !important;
+    top: 100% !important;
+    /* Adjust as needed */
+    left: 0 !important;
+    /* Adjust as needed */
+    transform: none !important;
+}
+.boards .addListForm.addListCard {
+  width: 100%;
+  position: absolute !important;
+}
+
+.boards .addListForm input {
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 12px;
+  border: 2px solid #0055cc;
+  padding: 2px 6px;
+}
+
+.boards .addListForm button {
+  padding: 5px 12px;
+}
+
+.boards .addListForm form > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.boards .list > .wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: calc(100% - 140px);
+  /* min-height: 100px; */
+  padding-bottom: 10px;
+  /* overflow-y: auto;
+  overflow-x: hidden; */
+}
+
+.list .wrapper .item .cover-image {
+  height: 25px;
+}
+
+.boards .list > .wrapper .item {
+  overflow: hidden;
+  width: 100%;
+  border-radius: 12px;
+  background-color: #22272b;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.45);
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.45);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.3s ease-in;
+}
+.boards .list > .wrapper .item:active {
+  opacity: 0.7;
+  border: 1px solid rgb(49, 134, 214) !important;
+}
+
+.boards .list > .wrapper .item .title {
+  padding: 8px 12px;
+}
+
+.boards .list > .wrapper .item:hover {
+  border: 1px solid rgba(58, 54, 54, 0.466);
+}
+
+.boards .board-options {
+  display: flex;
+  color: white;
+  font-size: 22px;
+  margin-bottom: 16px;
+}
