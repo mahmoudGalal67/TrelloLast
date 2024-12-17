@@ -349,7 +349,6 @@ function Workspace() {
             position: "fixed",
             top: "100px",
             left: "50%",
-            // width: "30%",
             zIndex: "11111",
             transform: "translate(-50%, -50%)",
           }}
@@ -363,9 +362,6 @@ function Workspace() {
         className="views workspacePage"
         style={{
           width: show ? "calc(100vw - 280px)" : "100vw",
-          // maxWidth: "1250px",
-          paddingRight: !show ? " 150px" : "0",
-          paddingLeft: !show ? " 150px" : "0",
         }}
       >
         <div className="workspace views-wrapper">

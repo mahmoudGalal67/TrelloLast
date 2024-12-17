@@ -24,7 +24,7 @@ import Notifications from "../../components/push notifications/PushNotifications
 import { AuthContext } from "../../components/context/Auth";
 
 function Board() {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
 
   const [postion, setpostion] = useState(null);
 

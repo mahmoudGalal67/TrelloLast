@@ -20,7 +20,6 @@ const Card = React.memo(
 
     const onOpenModal = () => {
       setOpen(true);
-      setShow(false);
     };
     const onCloseModal = () => setOpen(false);
 
@@ -77,9 +76,6 @@ const Card = React.memo(
       }
     };
 
-    useEffect(() => {
-      setShow(false);
-    }, [isEditing]);
     // التعامل مع الحدث عند الضغط على الأيقونة
     const handleEditClick = (e) => {
       e.stopPropagation(); // منع الحدث من الانتشار
@@ -94,12 +90,20 @@ const Card = React.memo(
     return (
       <>
         <div className="item" onClick={onOpenModal}>
-          {cardCoverImg ? ( // إذا كان هناك رابط للصورة
+          {cardDetails.color ? (
+            <div
+              className="cover-image"
+              style={{
+                background: `${cardDetails.color}`, // استخدام الصورة كخلفية
+                height: fullCover ? "80px" : "40px", // إذا كانت الصورة موجودة
+              }}
+            ></div>
+          ) : cardCoverImg ? ( // إذا كان هناك رابط للصورة
             <div
               className="cover-image"
               style={{
                 background: `url(${cardCoverImg})`, // استخدام الصورة كخلفية
-                height: "40px", // إذا كانت الصورة موجودة
+                height: fullCover ? "80px" : "40px", // إذا كانت الصورة موجودة
               }}
             ></div>
           ) : cardDetails.photo ? (
@@ -107,7 +111,7 @@ const Card = React.memo(
               className="cover-image"
               style={{
                 background: `url(https://back.alyoumsa.com/public/${cardDetails.photo})`, // استخدام الصورة كخلفية
-                height: "40px", // إذا كانت الصورة موجودة
+                height: fullCover ? "80px" : "40px", // إذا كانت الصورة موجودة
               }}
             ></div>
           ) : (

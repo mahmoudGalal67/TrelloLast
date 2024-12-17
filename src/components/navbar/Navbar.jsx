@@ -417,7 +417,6 @@ function NavBar({
                 title="Create Workspace"
                 id="navbarScrollingDropdown"
                 className="create"
-                onClick={() => setShow(false)}
               >
                 <form className="container" onSubmit={addWorkspace}>
                   <h2>Workspace</h2>
@@ -665,15 +664,12 @@ function NavBar({
             </NavDropdown>
           </Nav>
 
-          <Form className="d-flex">
+          <Form className="d-flex justify-content-center">
             <form
               type="search"
               placeholder="Search"
               className="me-2"
               aria-label="Search"
-              onClick={(e) => {
-                setShow(false);
-              }}
             >
               <input
                 placeholder="Search"

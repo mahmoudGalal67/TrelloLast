@@ -123,7 +123,6 @@ function Workspace() {
     if (selectedFile) {
       if (selectedFile.type.startsWith("image/")) {
         setFile(selectedFile);
-        console.log("File selected:", selectedFile);
       } else {
         setError("Please select a valid image file.");
         setFile(null);
@@ -192,9 +191,7 @@ function Workspace() {
                         ? {
                             ...board,
                             name: editedBoardName || board.name,
-                            photo: file
-                              ? URL.createObjectURL(file)
-                              : board.photo, // إذا لم يتم تغيير الصورة، احتفظ بالصورة الأصلية
+                            photo: file ? file : board.photo, // إذا لم يتم تغيير الصورة، احتفظ بالصورة الأصلية
                           }
                         : board
                     ),
@@ -448,13 +445,13 @@ function Workspace() {
           marginLeft: show ? "280px" : "0",
         }}
       >
-        <h3>YOUR WORKSPACES</h3>
+        <h3 className="ms-2">YOUR WORKSPACES</h3>
         <div className="workSpacesContainer">
           {workSpaces.map((workspace) => (
             <div className="workspace-item" key={workspace.id}>
               {" "}
               {/* single workspace */}
-              <div className="d-flex justify-content-between mb-5">
+              <div className="d-flex flex-wrap justify-content-around mb-5">
                 <div>
                   <h3>{workspace.name}</h3>
                 </div>
@@ -527,9 +524,12 @@ function Workspace() {
                       <div
                         className="card"
                         style={{
-                          backgroundImage: board.photo
-                            ? `url(https://back.alyoumsa.com/public/storage/${board.photo})`
-                            : `url(${bgimg})`,
+                          backgroundImage:
+                            board.photo instanceof File
+                              ? `url(${URL.createObjectURL(board.photo)})`
+                              : board.photo
+                              ? `url(https://back.alyoumsa.com/public/storage/${board.photo})`
+                              : `url(${bgimg})`,
                         }}
                       >
                         <div

@@ -14,7 +14,6 @@
   padding: 2%;
   color: white;
   padding: 0;
-  width: 768px;
   height: 100%;
 }
 .modal-body h2,
@@ -90,7 +89,6 @@
   cursor: pointer;
   font-size: 14px;
   font-weight: 600;
-
 }
 
 .modal-body > .wrapper .right > .item:hover {
@@ -179,7 +177,7 @@
   padding: 6px 12px;
   color: white;
   border-radius: 8px;
-    font-size: 14px;
+  font-size: 14px;
 }
 .modal-body .state-wrapper .state {
   background-color: rgb(69, 187, 69);
@@ -363,7 +361,7 @@
 
 .modal-body .cover-image,
 .list .item .cover-image {
-  height: 260px ;
+  height: 260px;
 }
 .cover-image > div {
   height: 100%;
@@ -484,22 +482,19 @@
   background-color: #101011d5 !important;
 }
 
-
-
-.colorsBox{
+.colorsBox {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap : 5px;
+  gap: 5px;
   margin-top: 8px;
   margin-bottom: 16px;
   width: 276px;
-
 }
 
-.sizesBox{
+.sizesBox {
   display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
 }
 
 .cover-modal .modal-dialog {
@@ -520,8 +515,6 @@
   }
 }
 
-
-
-.desc-content img{
+.desc-content img {
   max-width: 500px;
 }

@@ -6,16 +6,15 @@
   padding-bottom: 80px !important;
   min-height: 100vh;
   overflow-y: scroll;
-} 
+}
 
 .views h3 {
   color: hsl(211, 18%, 68%);
   font-size: 18px;
   margin: 20px 0;
-  
 }
 
-.workSpacesContainer{
+.workSpacesContainer {
   padding: 0 0 20px;
 }
 
@@ -26,28 +25,26 @@
   align-items: center;
 }
 
-
 .workSpacesContainer .workspace-bar .ws-option {
   background: #a1bdd914 !important;
   border: none;
   border-radius: 3px;
-  color:#b6c2cf;
+  color: #b6c2cf;
   margin-bottom: 8px;
   margin-left: 8px;
-  padding: 6px 12px 6px 6px ;
-    max-width: 130px;
-    font-size: 14px;
+  padding: 6px 12px 6px 6px;
+  max-width: 130px;
+  font-size: 14px;
 }
 
-.ws-option+.dropdown-menu.membersMenu {
+.ws-option + .dropdown-menu.membersMenu {
   background-color: #282e33 !important;
-  
 }
-.ws-option+.dropdown-menu.membersMenu .dropdown-item{
-      color: #b6c2cf !important;
+.ws-option + .dropdown-menu.membersMenu .dropdown-item {
+  color: #b6c2cf !important;
 }
 
-.ws-option+.dropdown-menu.membersMenu > .custom-dropdown-item:hover {
+.ws-option + .dropdown-menu.membersMenu > .custom-dropdown-item:hover {
   background-color: #a1bdd914 !important;
   color: #b6c2cf !important;
 }
@@ -64,8 +61,8 @@
   justify-content: space-between;
   padding: 10px;
   border: none;
-    border-radius: 3px !important;
-    background-color: #a1bdd914 !important;
+  border-radius: 3px !important;
+  background-color: #a1bdd914 !important;
 }
 
 .card .board-link {
@@ -88,7 +85,7 @@
 }
 
 .board-container {
-  min-width: 194px;
+  min-width: 140px;
   width: 20%;
   height: 96px;
   margin: 0 2% 2% 0;
@@ -99,8 +96,6 @@
   font-size: 1.2rem;
   z-index: 1;
 }
-
-
 
 .no-caret::after {
   display: none !important;
@@ -125,16 +120,8 @@
   color: #333;
 }
 
-
 .views-wrapper {
-width: 100% !important;   
-}
-
-.views-wrapper {
-  display: flex;
-  justify-content: start !important;
-  flex-wrap: wrap;
-  gap: 0 !important;
+  width: 100% !important;
 }
 
 @media (max-width: 500px) {
@@ -146,8 +133,7 @@ width: 100% !important;
   }
 }
 
-
 .workSpacesContainer .workspace-item {
-    border-top: rgb(182, 194, 207,0.5) solid 1px;
-    padding-top: 30px;
+  border-top: rgb(182, 194, 207, 0.5) solid 1px;
+  padding-top: 30px;
 }

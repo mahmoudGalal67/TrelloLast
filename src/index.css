@@ -2,12 +2,18 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  background-color: #1d2125 !important;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.dropdown-menu {
+  position: relative;
+  z-index: 10000000000000 !important;
 }
 
 a {

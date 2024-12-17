@@ -37,12 +37,11 @@ function addList({ boardId, setboard, setShow }) {
       }));
       listTitle.current.value = "";
       // window.location.reload();
-      console.log('add list')
+      console.log("add list");
     } catch (err) {
       console.log(err);
       seterror(err.response?.data?.message);
-            console.log("can not add list");
-
+      console.log("can not add list");
     }
   };
   return (
@@ -53,25 +52,16 @@ function addList({ boardId, setboard, setShow }) {
           backgroundColor: "#ffffff80",
           borderRadius: "12px",
         }}
-        autoClose="inside"
+        // autoClose="inside"
       >
         <Dropdown.Toggle className="addList " id="dropdown-basic">
           <img src="/plus.svg" alt="" />
-          <button
-            onClick={() => {
-              setShow(false);
-              console.log("click on addList btn");
-            }}
-            type="text"
-          >
-            Add another list
-          </button>
+          <button type="text">Add another list</button>
         </Dropdown.Toggle>
 
         <Dropdown.Menu
           className="addListForm addListCard"
           onClick={(e) => e.stopPropagation()}
-         
           popperConfig={{
             modifiers: [
               {

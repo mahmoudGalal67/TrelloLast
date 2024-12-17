@@ -97,8 +97,6 @@ function CardDetails({
 
   const { user } = useContext(AuthContext);
 
-  const [fileURL, setFileURL] = useState([]);
-
   const [activeMovinglist, setactiveMovinglist] = useState(
     board.lists_of_the_board[0].id
   );
@@ -1388,7 +1386,10 @@ function CardDetails({
                 padding: "6px",
                 fontWeight: "bold",
               }}
-              onClick={() => updateCoverColor("", true)}
+              onClick={() => {
+                updateCoverColor("", true);
+                handleChangeColorRequest("", true);
+              }}
             >
               Remove Cover
             </button>

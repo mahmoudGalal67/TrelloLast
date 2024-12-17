@@ -20,9 +20,6 @@ import AddUserModal from "../addUserModal/AddUserModal";
 import { BsPeople } from "react-icons/bs";
 
 function SideBar({ show, setShow }) {
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
   const { user } = useContext(AuthContext);
 
   const [loading, setLoading] = useState(true);
@@ -37,6 +34,13 @@ function SideBar({ show, setShow }) {
   const pathName = path.split("/")[1];
 
   const cookies = Cookies.get("token");
+
+  useEffect(() => {
+    if (window.innerWidth <= 400) {
+      setShow(false);
+    }
+  }, []);
+
   useEffect(() => {
     if (workspaceId) {
       const getWorkSpace = async () => {
@@ -112,20 +116,28 @@ function SideBar({ show, setShow }) {
     <>
       <button
         className="sideNav-link"
-        onClick={handleShow}
+        onClick={() => setShow((prev) => !prev)}
         style={{
-          visibility: show ? "hidden" : "visible",
+          transform: show
+            ? "translateX(260px) rotate(180deg)"
+            : "translateX(2px)",
         }}
       >
         <IoIosArrowForward style={{ color: "#b6c2cf" }} />
       </button>
 
-      <div className="side-bar"></div>
-      <Offcanvas show={show} onHide={handleClose}>
+      <div className="Offcanvas" style={{ width: show ? "280px" : "15px" }}>
         {
-          <Offcanvas.Header closeButton>
+          <div
+            className="Offcanvas-header"
+            style={{ opacity: show ? "1" : "0" }}
+            closeButton
+          >
             {workSpace ? (
-              <Offcanvas.Title>
+              <div
+                className="Offcanvas-title"
+                style={{ opacity: show ? "1" : "0" }}
+              >
                 <span
                   style={{
                     backgroundColor: "#e774bb",
@@ -144,14 +156,14 @@ function SideBar({ show, setShow }) {
                   {workSpace.name.charAt(0).toUpperCase()}
                 </span>
                 {workSpace.name}
-              </Offcanvas.Title>
+              </div>
             ) : (
-              <Offcanvas.Title> Workspaces</Offcanvas.Title>
+              <div className="Offcanvas-title"> Workspaces</div>
             )}
-          </Offcanvas.Header>
+          </div>
         }
 
-        <Offcanvas.Body>
+        <div className="Offcanvas-body" style={{ opacity: show ? "1" : "0" }}>
           {pathName === "" &&
             userWS.map((ws) => (
               <NavLink
@@ -269,8 +281,8 @@ function SideBar({ show, setShow }) {
           {/* admin can only add user */}
 
           {user?.role === "admin" && <AddUserModal />}
-        </Offcanvas.Body>
-      </Offcanvas>
+        </div>
+      </div>
     </>
   );
 }

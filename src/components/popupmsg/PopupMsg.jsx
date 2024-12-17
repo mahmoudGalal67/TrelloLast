@@ -1,15 +1,17 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-import { Button } from 'react-bootstrap';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
-import DateTimeField from '../formatdatetime/DateTimeField';
+import Cookies from "js-cookie";
+import api from "../../apiAuth/auth";
 
-const PopupMsg = ({ workSpaces, allUsers }) => {
+const PopupMsg = ({ workSpaces }) => {
   const currentLoggedUser = JSON.parse(localStorage.getItem("user"));
-
-  console.log(workSpaces, allUsers);
+  const [Alluser, setAllUsers] = useState([]);
   const [sendtousers, setsendtousers] = useState(null);
   const [deliveredMsg, setDeliveredMsg] = useState([]);
+
+  const cookies = Cookies.get("token");
 
   const [dedicatedMsgInfo, setDedicatedMsgInfo] = useState({
     title: "",
@@ -17,6 +19,20 @@ const PopupMsg = ({ workSpaces, allUsers }) => {
     workspace_id: null,
     user_ids: [],
   });
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const { data } = await api.get("/users/get-users", {
+          headers: { Authorization: `Bearer ${cookies}` },
+        });
+        setAllUsers(data.data); // Ensure 'data.data' matches your API structure
+      } catch (err) {
+        console.error("Error fetching users:", err);
+      }
+    };
+    fetchUsers();
+  }, []);
 
   const handleUserChange = (user, checked) => {
     if (checked) {
@@ -130,7 +146,7 @@ const PopupMsg = ({ workSpaces, allUsers }) => {
         alignItems: "center",
         gap: "15px",
         maxHeight: "440px",
-        overflowY: "hidden",
+        overflowY: "scroll",
       }}
     >
       {currentLoggedUser.role === "admin" ? (
@@ -141,7 +157,6 @@ const PopupMsg = ({ workSpaces, allUsers }) => {
             flexDirection: "column",
             alignItems: "stretch",
             gap: "5px",
-            overflowY: "scroll",
           }}
         >
           <Form.Group>
@@ -225,8 +240,8 @@ const PopupMsg = ({ workSpaces, allUsers }) => {
                 }}
               >
                 <Form.Label>choose Dedicated Users</Form.Label>
-                {allUsers &&
-                  allUsers.map((user) => (
+                {Alluser &&
+                  Alluser.map((user) => (
                     <Form.Check
                       key={user.id}
                       type="checkbox"
@@ -342,4 +357,4 @@ const PopupMsg = ({ workSpaces, allUsers }) => {
   );
 };
 
-export default PopupMsg
+export default PopupMsg;
