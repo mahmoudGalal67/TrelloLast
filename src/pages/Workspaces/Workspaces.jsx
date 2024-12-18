@@ -809,7 +809,6 @@ function Workspace() {
         }}
         onClick={() => {
           setOpenPopUp(!openPopUp);
-          setShow(false);
         }}
       >
         msg

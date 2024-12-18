@@ -140,7 +140,10 @@ function SideBar({ show, setShow }) {
               >
                 <span
                   style={{
-                    backgroundColor: "#e774bb",
+                    backgroundColor: workSpace.color
+                      ? workSpace.color
+                      : "#e774bb",
+
                     width: "24px",
                     height: "24px",
                     borderRadius: "8px",
@@ -173,7 +176,8 @@ function SideBar({ show, setShow }) {
               >
                 <span
                   style={{
-                    backgroundColor: "#e774bb",
+                    backgroundColor: ws?.color ? ws?.color : "#e774bb",
+
                     width: "24px",
                     height: "24px",
                     borderRadius: "8px",

@@ -382,7 +382,9 @@ function Workspace() {
               >
                 <span
                   style={{
-                    backgroundColor: "#e774bb",
+                    backgroundColor: workSpace.color
+                      ? workSpace.color
+                      : "#e774bb",
                     width: "40px",
                     height: "40px",
                     borderRadius: "8px",

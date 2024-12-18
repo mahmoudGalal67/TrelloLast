@@ -249,7 +249,6 @@ function List({ list, setboard, boardId, board, setShow, show }) {
             type="text"
             onClick={() => {
               setshowCardList(true);
-              setShow(false);
             }}
           >
             Add a card

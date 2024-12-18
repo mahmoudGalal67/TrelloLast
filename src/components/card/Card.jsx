@@ -111,7 +111,8 @@ const Card = React.memo(
               className="cover-image"
               style={{
                 background: `url(https://back.alyoumsa.com/public/${cardDetails.photo})`, // استخدام الصورة كخلفية
-                height: fullCover ? "80px" : "40px", // إذا كانت الصورة موجودة
+                maxHeight: fullCover ? "240px " : "40px", // إذا كانت الصورة موجودة
+                height: fullCover ? "240px " : "40px", // إذا كانت الصورة موجودة
               }}
             ></div>
           ) : (
