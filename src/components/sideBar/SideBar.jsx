@@ -19,7 +19,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import AddUserModal from "../addUserModal/AddUserModal";
 import { BsPeople } from "react-icons/bs";
 
-function SideBar({ show, setShow }) {
+function SideBar({ show, setShow, workSpaces }) {
   const { user } = useContext(AuthContext);
 
   const [loading, setLoading] = useState(true);
@@ -84,23 +84,23 @@ function SideBar({ show, setShow }) {
     }
   }, [boardId]);
 
-  const getAllWSofUser = async () => {
-    try {
-      const response = await api({
-        url: `workspaces/user/workspaces`,
-        headers: { Authorization: `Bearer ${cookies}` },
-      });
-      const userWs = response.data.data;
-      setUserWS(userWs);
-      return userWs;
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const getAllWSofUser = async () => {
+  //   try {
+  //     const response = await api({
+  //       url: `workspaces/user/workspaces`,
+  //       headers: { Authorization: `Bearer ${cookies}` },
+  //     });
+  //     const userWs = response.data.data;
+  //     setUserWS(userWs);
+  //     return userWs;
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
-  useEffect(() => {
-    getAllWSofUser();
-  }, []);
+  // useEffect(() => {
+  //   getAllWSofUser();
+  // }, []);
 
   if (loading) {
     return (
@@ -168,7 +168,7 @@ function SideBar({ show, setShow }) {
 
         <div className="Offcanvas-body" style={{ opacity: show ? "1" : "0" }}>
           {pathName === "" &&
-            userWS.map((ws) => (
+            workSpaces.map((ws) => (
               <NavLink
                 to={`/workspace/${ws.id}`}
                 key={ws.id}

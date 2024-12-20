@@ -36,7 +36,7 @@ function Workspace() {
   const [openPopUp, setOpenPopUp] = useState(false);
   const [allUsers, setAllUsers] = useState([]);
 
-  const [boardVisibility, setBoardVisibility] = useState("workspace"); // Default value
+  const [boardVisibility, setBoardVisibility] = useState(); // Default value
 
   const [file, setFile] = useState(null);
   const [error, setError] = useState("");
@@ -113,7 +113,6 @@ function Workspace() {
     setEditingBoardId(board_id);
     setEditedBoardName(currentBoardName);
     setEditedBoardPhoto(currentBoardPhoto);
-    seteditedvisibility("public");
     setShowModal(true);
   };
 
@@ -166,6 +165,7 @@ function Workspace() {
     //  }
 
     try {
+      setLoading(true);
       const response = await api({
         url: `/boards/update/${board_id}`,
         method: "POST",
@@ -209,12 +209,13 @@ function Workspace() {
         console.error("Update failed:", response.data.message);
         alert(`Error: ${response.data.message}`);
       }
+      setLoading(false);
     } catch (error) {
       console.error(
         "Error updating board:",
         error.response?.data || error.message
       );
-
+      setLoading(false);
       alert("Failed to update board. Please try again.");
     }
   };
@@ -417,7 +418,7 @@ function Workspace() {
         setAllUsers={setAllUsers}
       />
 
-      <SideBar show={show} setShow={setShow} />
+      <SideBar show={show} setShow={setShow} workSpaces={workSpaces} />
 
       {hasAccess === false && (
         <Alert
@@ -610,19 +611,47 @@ function Workspace() {
             />
           </Form.Group>
           <Form.Group controlId="formBoardPhoto">
-            <Form.Label>Board Photo</Form.Label>
+            {file && file instanceof File ? (
+              <img
+                src={URL.createObjectURL(file)}
+                alt=""
+                style={{ width: "100%", margin: "15px 0", maxHeight: "240px" }}
+              />
+            ) : (
+              <img
+                src={`https://back.alyoumsa.com/public/storage/${editedBoardPhoto}`}
+                alt=""
+                style={{ width: "100%", margin: "15px 0", maxHeight: "240px" }}
+              />
+            )}
             <Form.Control
               type="file"
+              id="boardfile"
               accept="image/*"
               onChange={handleImageChange}
+              style={{ display: "none" }}
             />
           </Form.Group>
+          <Form.Label
+            for="boardfile"
+            style={{
+              cursor: "pointer",
+              textAlign: "center",
+              margin: "12px 0",
+              width: "100%",
+            }}
+          >
+            Change Bsckground
+          </Form.Label>
           <Form.Group controlId="formBoardVisibility">
             <Form.Label>Visibility</Form.Label>
             <Form.Select
               value={boardVisibility} // State holding the selected visibility
               onChange={(e) => setBoardVisibility(e.target.value)} // Update state on change
             >
+              <option value="private" disabled selected={true}>
+                Set board Visibility
+              </option>
               <option value="private">Private</option>
               <option value="public">Public</option>
               <option value="workspace">workspace</option>
@@ -742,7 +771,7 @@ function Workspace() {
               handleSaveClick(workspace.id, editingBoardId, selectedUsers);
             }}
           >
-            Save Changes
+            {loading ? "Loading ..." : "Save Changes"}
           </Button>
         </Modal.Footer>
       </Modal>

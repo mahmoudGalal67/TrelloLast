@@ -39,7 +39,8 @@
 }
 .workspace .workspace-item .board-link {
   padding: 8px;
-  max-width: 240px;
+  width: 240px;
+  height: 120px;
 }
 
 .workspace .workspace-item .board-link .card {

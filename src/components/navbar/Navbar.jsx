@@ -15,11 +15,6 @@ import { useNavigate } from "react-router-dom";
 import ChangeBoardBg from "../changeBoardBg/ChangeBoardBg";
 import { DropdownButton } from "react-bootstrap";
 
-import pic1 from "../../assets/pexels-anastasia-shuraeva-7278606.jpg";
-import pic2 from "../../assets/pexels-fauxels-3184160.jpg";
-import pic3 from "../../assets/pexels-goumbik-296115.jpg";
-import pic4 from "../../assets/pexels-ivan-samkov-7213439.jpg";
-
 function NavBar({
   workSpaces,
   setShow,
